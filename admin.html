@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asthma Space — Gerenciar Perfis</title>
+  <link rel="stylesheet" href="./css/style_global.css"/>
+  <link rel="stylesheet" href="./css/style_admin.css"/>
+</head>
+<body class="bg-dots">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a class="brand" href="index.html">
+        <div class="brand-icon">
+              <img src="./assets/ic_launcher_playstore_512px.png" alt="Asthma Space" width="48" height="48">
+        </div>
+        <span class="brand-name">Asthma<span>Space</span></span>
+      </a>
+
+      <div class="header-search">
+        <svg viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Buscar por nome ou e-mail…"/>
+      </div>
+
+      <div class="header-right">
+        <div class="admin-chip">ADMIN</div>
+        <button class="btn-logout" id="btnLogout">
+          <svg viewBox="0 0 24 24">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+          Sair
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <div class="page-title">
+        <h1>Gerenciar Perfis</h1>
+        <p>Selecione um usuário para visualizar e editar</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-lbl">Total</div>
+          <div class="stat-val mono" id="statTotal">—</div>
+          <div class="stat-sub">usuários cadastrados</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-lbl">Ativos</div>
+          <div class="stat-val mono" id="statAtivos">—</div>
+          <div class="stat-sub">contas ativas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-lbl">Admins</div>
+          <div class="stat-val mono" id="statAdmins">—</div>
+          <div class="stat-sub">com acesso total</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-lbl">Inativos</div>
+          <div class="stat-val mono" id="statInativos">—</div>
+          <div class="stat-sub">contas desativadas</div>
+        </div>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filter-bar">
+        <button class="chip active" data-filter="TODOS">Todos</button>
+        <button class="chip" data-filter="ADMIN">Admin</button>
+        <button class="chip" data-filter="USER">Usuário</button>
+        <button class="chip" data-filter="MEDICO">Médico</button>
+        <button class="chip" data-filter="INATIVO">Inativo</button>
+      </div>
+
+      <!-- Lista -->
+      <div class="user-list" id="userList">
+        <div class="list-empty">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <p>Carregando usuários…</p>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-empty" id="sidebarEmpty">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <p>Selecione um usuário para editar o perfil</p>
+      </div>
+
+      <div id="editPanel" style="display:none">
+
+        <!-- Abas -->
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="perfil">Perfil</button>
+          <button class="tab-btn" data-tab="conta">Conta &amp; Acesso</button>
+        </div>
+
+        <!-- ── ABA PERFIL ── -->
+        <div class="tab-panel active" id="tab-perfil">
+
+          <div class="edit-head">
+            <div class="edit-avatar" id="editAvatar"></div>
+            <div>
+              <div class="edit-name" id="editHeadName"></div>
+              <div class="edit-meta" id="editHeadMeta"></div>
+            </div>
+          </div>
+
+          <div class="edit-section">
+            <div class="section-title">Dados pessoais</div>
+
+            <div class="field">
+              <label class="lbl" for="editNome">Nome completo</label>
+              <input type="text" id="editNome" placeholder="Nome completo"/>
+            </div>
+            <div class="field">
+              <label class="lbl" for="editEmail">E-mail</label>
+              <input type="email" id="editEmail" placeholder="email@exemplo.com"/>
+            </div>
+            <div class="field">
+              <label class="lbl" for="editTelefone">Telefone</label>
+              <input type="tel" id="editTelefone" placeholder="(00) 00000-0000"/>
+            </div>
+            <div class="field">
+              <label class="lbl" for="editCpf">CPF</label>
+              <input type="text" id="editCpf" placeholder="000.000.000-00" maxlength="14"/>
+            </div>
+            <div class="field">
+              <label class="lbl" for="editDataNasc">Data de nascimento</label>
+              <input type="date" id="editDataNasc"/>
+            </div>
+            <div class="field">
+              <label class="lbl" for="editSexo">Sexo</label>
+              <select id="editSexo">
+                <option value="">Selecione</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Não binário">Não binário</option>
+                <option value="Prefiro não informar">Prefiro não informar</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Botão abre modal saúde -->
+          <button class="btn-more" id="btnVerSaude">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Dados de saúde &amp; endereço
+          </button>
+
+          <div class="action-stack" style="margin-top:16px">
+            <button class="btn btn-primary btn-full" id="btnSalvar" type="button">
+              <span class="btn-label">Salvar alterações</span>
+              <span class="spinner"></span>
+            </button>
+          </div>
+
+        </div><!-- /tab-perfil -->
+
+        <!-- ── ABA CONTA ── -->
+        <div class="tab-panel" id="tab-conta">
+
+          <div class="edit-section" style="padding-top:4px">
+            <div class="section-title">Permissões</div>
+            <div class="field">
+              <label class="lbl" for="editRole">Role / Perfil</label>
+              <select id="editRole">
+                <option value="USER">USER — Usuário comum</option>
+                <option value="MEDICO">MEDICO — Profissional de saúde</option>
+                <option value="ADMIN">ADMIN — Administrador</option>
+              </select>
+            </div>
+            <div class="toggle-row">
+              <span>Conta ativa</span>
+              <button class="toggle-switch" id="toggleAtivo" type="button" aria-label="Ativar / desativar conta"></button>
+            </div>
+          </div>
+
+          <div class="edit-section">
+            <div class="section-title">Redefinir senha</div>
+            <div class="field">
+              <label class="lbl" for="editSenha">Nova senha</label>
+              <div class="input-wrap">
+                <input type="password" id="editSenha" placeholder="Deixe em branco para manter"/>
+                <button class="input-icon" id="btnToggleSenha" type="button" aria-label="Mostrar senha">
+                  <svg id="eyeSenhaIcon" viewBox="0 0 24 24">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="field">
+              <label class="lbl" for="editSenhaConf">Confirmar nova senha</label>
+              <input type="password" id="editSenhaConf" placeholder="Repita a nova senha"/>
+            </div>
+          </div>
+
+          <div class="action-stack">
+            <button class="btn btn-primary btn-full" id="btnSalvarConta" type="button">
+              <span class="btn-label">Salvar alterações</span>
+              <span class="spinner"></span>
+            </button>
+            <button class="btn btn-danger btn-full" id="btnDesativar" type="button">
+              Desativar conta
+            </button>
+          </div>
+
+        </div><!-- /tab-conta -->
+
+      </div><!-- /editPanel -->
+    </aside>
+
+  </div><!-- /layout -->
+
+  <!-- ════ MODAL: SAÚDE & ENDEREÇO ════ -->
+  <div class="modal-overlay" id="modalSaude">
+    <div class="modal-saude-box">
+
+      <div class="modal-header">
+        <h3>Dados de saúde &amp; endereço</h3>
+        <button class="modal-close" id="closeSaude">
+          <svg viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="section-title">Condição respiratória</div>
+        <div class="modal-grid">
+          <div class="field field-full">
+            <label class="lbl" for="mProblema">Problema respiratório</label>
+            <textarea id="mProblema" placeholder="Descreva o diagnóstico ou condição…"></textarea>
+          </div>
+          <div class="field field-full">
+            <label class="lbl" for="mMedicamentos">Medicamentos em uso</label>
+            <textarea id="mMedicamentos" placeholder="Liste os medicamentos…"></textarea>
+          </div>
+          <div class="field field-full">
+            <label class="lbl" for="mAlergias">Alergias conhecidas</label>
+            <input type="text" id="mAlergias" placeholder="Ex.: poeira, pelos, pólen…"/>
+          </div>
+          <div class="field field-full">
+            <label class="lbl" for="mContato">Contato de emergência</label>
+            <input type="text" id="mContato" placeholder="Nome e telefone"/>
+          </div>
+        </div>
+
+        <div class="divider-h"></div>
+        <div class="section-title">Endereço</div>
+
+        <div class="addr-grid">
+          <div class="field field-full">
+            <label class="lbl" for="mCep">CEP</label>
+            <input type="text" id="mCep" placeholder="00000-000" maxlength="9"/>
+          </div>
+          <div class="field field-full">
+            <label class="lbl" for="mLogradouro">Logradouro</label>
+            <input type="text" id="mLogradouro" placeholder="Rua, Av…"/>
+          </div>
+          <div class="field">
+            <label class="lbl" for="mNumero">Número</label>
+            <input type="text" id="mNumero"/>
+          </div>
+          <div class="field">
+            <label class="lbl" for="mComplemento">Complemento</label>
+            <input type="text" id="mComplemento" placeholder="Apto, bloco…"/>
+          </div>
+          <div class="field">
+            <label class="lbl" for="mBairro">Bairro</label>
+            <input type="text" id="mBairro"/>
+          </div>
+          <div class="field">
+            <label class="lbl" for="mCidade">Cidade</label>
+            <input type="text" id="mCidade"/>
+          </div>
+          <div class="field">
+            <label class="lbl" for="mEstado">UF</label>
+            <input type="text" id="mEstado" maxlength="2" placeholder="SP"/>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn btn-ghost" id="cancelSaude">Cancelar</button>
+          <button class="btn btn-primary" id="btnSalvarSaude" type="button">
+            <span class="btn-label">Salvar dados</span>
+            <span class="spinner"></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ MODAL: CONFIRMAÇÃO ════ -->
+  <div class="modal-overlay" id="modalConfirm">
+    <div class="modal-box">
+      <h3 id="modalTitle">Desativar conta?</h3>
+      <p id="modalDesc">Esta ação irá desativar o acesso do usuário ao sistema.</p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="modalCancel">Cancelar</button>
+        <button class="btn btn-danger" id="modalOk">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <span class="toast-icon" id="toastIcon"></span>
+    <span id="toastMsg"></span>
+  </div>
+
+  <script type="module" src="./js/js_admin.js"></script>
+</body>
+</html>

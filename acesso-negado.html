@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asthma Space — Acesso Restrito</title>
+  <link rel="stylesheet" href="./css/style_global.css"/>
+  <link rel="stylesheet" href="./css/style_acesso-negado.css"/>
+</head>
+<body class="bg-dots bg-glow">
+
+  <div class="page">
+
+    <!-- Brand -->
+    <a class="brand" href="index.html">
+      <div class="brand-icon">
+        <img src="./assets/ic_launcher_playstore_512px.png" alt="Asthma Space" width="48" height="48">
+      </div>
+      <span class="brand-name">Asthma<span>Space</span></span>
+    </a>
+
+    <!-- Card -->
+    <div class="restricted-card">
+
+      <!-- Badge de status -->
+      <div class="info-badge">
+        <div class="dot-pulse"></div>
+        Conta sem acesso ao painel
+      </div>
+
+      <!-- Ícone -->
+      <div class="icon-wrap">
+        <div class="icon-ring-2"></div>
+        <div class="icon-ring"></div>
+        <div class="icon-inner">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+      </div>
+
+      <h1>Acesso restrito</h1>
+      <p class="desc-main">
+        Sua conta <strong id="userEmail"></strong> não possui permissão para acessar o painel administrativo.
+      </p>
+      <p class="desc-sub">
+        Para gerenciar sua saúde e usar todos os recursos do Asthma Space, utilize o <strong>aplicativo móvel</strong>.
+      </p>
+
+      <div class="divider"><span>o que você pode fazer</span></div>
+
+      <div class="btn-group">
+
+        <p class="store-label">Instalar o aplicativo</p>
+
+        <div class="store-group">
+
+          <!-- Google Play -->
+          <a class="btn-store" id="btnAndroid" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.18 23.76a2 2 0 0 0 2.04-.22l11.4-6.58-2.96-2.96-10.48 9.76zM.5 1.1C.19 1.52 0 2.12 0 2.9v18.2c0 .78.19 1.38.5 1.8l.1.1L10.72 12.9v-.24L.6 1z"/>
+              <path d="M14.08 16.28l-3.36-3.36-.02-.02 3.38-3.38 3.8 2.2c1.08.62 1.08 1.64 0 2.26l-3.8 2.3z"/>
+              <path d="M3.18.24l11.4 6.58-2.96 2.96L1.14.02A2 2 0 0 1 3.18.24z"/>
+            </svg>
+            <div class="btn-store-label">
+              <span class="btn-store-sub">Disponível no</span>
+              <span class="btn-store-name">Google Play</span>
+            </div>
+          </a>
+
+          <!-- App Store -->
+          <a class="btn-store" id="btnIOS" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            <div class="btn-store-label">
+              <span class="btn-store-sub">Baixar na</span>
+              <span class="btn-store-name">App Store</span>
+            </div>
+          </a>
+
+        </div>
+
+        <div class="divider divider-sm"><span>ou</span></div>
+
+<!-- Voltar ao login -->
+          <a class="btn btn-ghost btn-full btn-voltar" href="index.html">
+            <div class="btn-voltar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#4FC3F7" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+        </div>
+  Entrar com outra conta
+</a>
+
+      </div>
+    </div>
+
+    <p class="footer-note">Asthma Space · © 2025</p>
+
+  </div>
+
+  <script type="module" src="./js/js_acesso_restrito.js"></script>
+</body>
+</html>

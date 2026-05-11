@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asthma Space — Login</title>
+  <link rel="stylesheet" href="./css/style_global.css"/>
+  <link rel="stylesheet" href="./css/style_login.css"/>
+</head>
+<body class="bg-dots bg-glow">
+
+  <div class="page">
+
+    <!-- Brand -->
+    <a class="brand" href="#">
+      <div class="brand-icon">
+          <img src="./assets/./ic_launcher_playstore_512px.png" alt="Asthma Space" width="48" height="48">
+    </div>
+      <span class="brand-name">Asthma<span>Space</span></span>
+    </a>
+
+    <!-- Card -->
+    <div class="login-card">
+
+      <div class="card-head">
+        <h1>Bem-vindo de volta</h1>
+        <p>Entre com suas credenciais para continuar</p>
+      </div>
+
+      <!-- E-mail -->
+      <div class="field">
+        <label class="lbl" for="email">E-mail</label>
+        <input type="email" id="email" placeholder="seu@email.com" autocomplete="email"/>
+        <div class="field-err" id="emailErr">Informe um e-mail válido.</div>
+      </div>
+
+      <!-- Senha -->
+      <div class="field">
+        <label class="lbl" for="senha">Senha</label>
+        <div class="input-wrap">
+          <input type="password" id="senha" placeholder="••••••••" autocomplete="current-password"/>
+          <button class="input-icon" id="toggleSenha" type="button" aria-label="Mostrar senha">
+            <svg id="eyeIcon" viewBox="0 0 24 24">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+        <div class="field-err" id="senhaErr">Informe sua senha.</div>
+      </div>
+
+      <!-- Lembrar + Esqueci -->
+      <div class="row-mid">
+        <label class="check-wrap">
+          <input type="checkbox" id="lembrar"/>
+          <span>Lembrar de mim</span>
+        </label>
+        <a href="#" class="link-forgot" id="openForgot">Esqueci minha senha</a>
+      </div>
+
+      <!-- Botão entrar -->
+      <button class="btn btn-primary btn-full" id="btnLogin" type="button">
+        <span class="btn-label">Entrar</span>
+        <span class="spinner"></span>
+      </button>
+
+      <div class="divider"><span>acesso seguro via JWT</span></div>
+      <p class="footer-note">Asthma Space · © 2025</p>
+
+    </div>
+  </div>
+
+  <!-- Modal: Esqueci minha senha -->
+  <div class="modal-overlay" id="modalForgot">
+    <div class="modal-box">
+      <h3>Redefinir senha</h3>
+      <p>Informe o e-mail da sua conta e enviaremos as instruções de recuperação.</p>
+      <div class="field">
+        <label class="lbl" for="emailReset">E-mail cadastrado</label>
+        <input type="email" id="emailReset" placeholder="seu@email.com"/>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="closeForgot">Cancelar</button>
+        <button class="btn btn-primary" id="btnReset" type="button">
+          <span class="btn-label">Enviar</span>
+          <span class="spinner"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <span class="toast-icon" id="toastIcon"></span>
+    <span id="toastMsg"></span>
+  </div>
+
+  <script type="module" src="./js/js_login.js"></script>
+</body>
+</html>
