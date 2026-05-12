@@ -240,16 +240,66 @@
 .divider-h { height: 1px; background: rgba(79,195,247,0.07); margin: 16px 0; }
 
 /* ── RESPONSIVE ── */
+/* ── RESPONSIVE ── */
 @media (max-width: 960px) {
   .layout { grid-template-columns: 1fr; }
-  .sidebar { border-left: none; border-top: 1px solid rgba(79,195,247,0.08); }
+  .sidebar {
+    border-left: none;
+    border-top: 1px solid rgba(79,195,247,0.08);
+    min-height: 400px;
+  }
   .stats-grid { grid-template-columns: repeat(2,1fr); }
 }
-@media (max-width: 560px) {
+
+@media (max-width: 600px) {
+  /* Header */
+  .site-header { padding: 0 14px; }
+  .header-inner { gap: 10px; }
   .header-search { display: none; }
-  .user-row { grid-template-columns: 36px 1fr auto auto; }
+  .admin-chip { display: none; }
+  .btn-logout span { display: none; }
+  .btn-logout { padding: 7px; }
+  .btn-logout svg { width: 16px; height: 16px; }
+
+  /* Layout */
+  .main { padding: 18px 14px; }
+
+  /* Stats */
+  .stats-grid {
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .stat-val { font-size: 1.35rem; }
+
+  /* Filtros */
+  .filter-bar { gap: 6px; }
+  .chip { font-size: .78rem; padding: 4px 11px; }
+
+  /* User row — esconde chevron, ajusta colunas */
+  .user-row {
+    grid-template-columns: 36px 1fr auto auto;
+    padding: 11px 12px;
+    gap: 10px;
+  }
   .user-row .chevron { display: none; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .user-name  { font-size: .88rem; }
+  .user-email { font-size: .75rem; }
+
+  /* Sidebar / Edit panel */
+  .tab-panel { padding: 18px 14px; }
+  .tab-btn   { font-size: .8rem; padding: 12px 6px; }
+
+  /* Modal saúde */
+  .modal-saude-box { max-height: 85vh; }
+  .modal-header { padding: 16px 16px 0; margin-bottom: 14px; }
+  .modal-body   { padding: 0 16px 20px; }
   .modal-grid, .addr-grid { grid-template-columns: 1fr; }
-  .modal-grid .field-full, .addr-grid .field-full { grid-column: 1; }
+  .modal-grid .field-full,
+  .addr-grid .field-full { grid-column: 1; }
+
+  /* Modal confirmação */
+  .modal-box { padding: 24px 18px; }
+  .modal-actions { flex-direction: column; gap: 8px; }
+  .modal-actions .btn { width: 100%; }
 }
